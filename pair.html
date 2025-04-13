@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>𝐓𝐄𝐂𝐇𝐒𝐘𝐍𝐂-𝐌𝐃 𝐒𝐄𝐒𝐒𝐈𝐎𝐍.𝐈𝐃</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Futuristic neon-style background */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle, #001f3f, #000);
+      color: #0ff;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }/* Animated cyber glow effect */
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff; }
+  50% { text-shadow: 0 0 10px #00ffffaa, 0 0 20px #00ffffaa, 0 0 30px #00ffffaa; }
+  100% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff; }
+}
+
+h3, h6 {
+  text-align: center;
+  animation: glow 1.5s infinite alternate;
+}
+
+.container {
+  position: relative;
+  background: rgba(0, 15, 30, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #0ff;
+  text-align: center;
+  width: 400px;
+}
+
+.input-container {
+  display: flex;
+  margin-top: 20px;
+  border: 2px solid #0ff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.input-container input {
+  flex: 1;
+  background: #000c1a;
+  color: #0ff;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  outline: none;
+  text-align: center;
+}
+
+.input-container input::placeholder {
+  color: #0aa;
+}
+
+.input-container button {
+  background: #0ff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.input-container button:hover {
+  background: #00aaff;
+  transform: scale(1.1);
+}
+
+#pair a {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #ff0044;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>ᴛᴇᴄʜsʏɴᴄ-ᴍᴅ sᴇssɪᴏɴ.ɪᴅ</h3>
+    <h6>ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴍᴠᴇʟᴀsᴇ ᴛᴇᴄʜ ʜᴜʙ.</h6>
+    <h6>ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴡʜᴀᴛsᴀᴘᴘ ɴᴜᴍʙᴇʀ ᴡɪᴛʜ ʏᴏᴜʀ ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ</h6><div class="input-container">
+  <input type="text" id="number" placeholder="263xxxxxxxx" maxlength="15">
+  <button id="submit">sᴜʙᴍɪᴛ</button>
+</div>
+
+<main id="pair"></main>
+
+  </div>  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>  <script>
+    let pairOutput = document.getElementById("pair");
+    let submitBtn = document.getElementById("submit");
+    let numberInput = document.getElementById("number");
+
+    numberInput.addEventListener("input", () => {
+      numberInput.value = numberInput.value.replace(/[^0-9+]/g, "");
+    });
+
+    async function Copy() {
+      let text = document.getElementById("copy").innerText.replace('CODE: ', '');
+      await navigator.clipboard.writeText(text);
+      let copyElement = document.getElementById("copy");
+      copyElement.innerText = "ᴄᴏᴘɪᴇᴅ!";
+      setTimeout(() => copyElement.innerText = `CODE: ${text}`, 1000);
+    }
+
+    submitBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      let number = numberInput.value.replace(/[^0-9]/g, "");
+
+      if (!number) {
+        pairOutput.innerHTML = '<a style="color:red;">ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴡʜᴀᴛsᴀᴘᴘ ɴᴜᴍʙᴇʀ ᴡɪᴛʜ ʏᴏᴜʀ ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ</a>';
+        return;
+      } else if (number.length < 11) {
+        pairOutput.innerHTML = '<a style="color:red;">𝐈𝐍𝐕𝐀𝐋𝐈𝐃 𝐍𝐔𝐌𝐁𝐄𝐑 𝐅𝐎𝐑𝐌𝐀𝐑𝐓!</a>';
+        return;
+      }
+
+      pairOutput.innerHTML = '<a style="color:yellow;">ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ᴡʜɪʟᴇ ᴘʀᴏᴄᴇssɪɴɢ</a>';
+
+      try {
+        let { data } = await axios(`/code?number=${number}`);
+        let code = data.code || "service unavailable";
+        pairOutput.innerHTML = `<a id="copy" onclick="Copy()">CODE: ${code}</a>`;
+      } catch (error) {
+        pairOutput.innerHTML = '<a style="color:red;">𝐄𝐑𝐑𝐎𝐑 𝐅𝐄𝐓𝐂𝐇𝐈𝐍𝐆 𝐂𝐎𝐃𝐄</a>';
+      }
+    });
+  </script></body>
+  </html>
